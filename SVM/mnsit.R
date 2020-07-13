@@ -1,20 +1,15 @@
-# Classification template
 
 # Importing the dataset
 dataset = read.csv('mnsit.csv')
 
 
 # Splitting the dataset into the Training set and Test set
-# install.packages('caTools')
 library(caTools)
 set.seed(123)
 split = sample.split(dataset$label, SplitRatio = 0.9)
 training_set = subset(dataset, split == TRUE)
 test_set = subset(dataset, split == FALSE)
 
-# Feature Scaling
-#training_set[-1] = scale(training_set[-1])
-#test_set[-1] = scale(test_set[-1])
 
 library(e1071)
 classifier = svm(formula = label ~.,
